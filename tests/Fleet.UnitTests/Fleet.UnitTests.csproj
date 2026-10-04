@@ -18,4 +18,9 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fleet.Domain\Fleet.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Fleet.Application\Fleet.Application.csproj" />
+  </ItemGroup>
+
 </Project>

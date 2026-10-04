@@ -10,4 +10,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fleet.Application\Fleet.Application.csproj" />
+    <ProjectReference Include="..\Fleet.Infrastructure\Fleet.Infrastructure.csproj" />
+    <ProjectReference Include="..\Fleet.Contracts\Fleet.Contracts.csproj" />
+  </ItemGroup>
 </Project>
