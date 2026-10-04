@@ -1,0 +1,12 @@
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Contracts\bin\Debug\net10.0\Fleet.Contracts.deps.json
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Contracts\bin\Debug\net10.0\Fleet.Contracts.dll
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Contracts\bin\Debug\net10.0\Fleet.Contracts.pdb
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Contracts\obj\Debug\net10.0\Fleet.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Contracts\obj\Debug\net10.0\Fleet.Contracts.AssemblyInfoInputs.cache
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Contracts\obj\Debug\net10.0\Fleet.Contracts.AssemblyInfo.cs
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Contracts\obj\Debug\net10.0\Fleet.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Contracts\obj\Debug\net10.0\Fleet.Contracts.sourcelink.json
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Contracts\obj\Debug\net10.0\Fleet.Contracts.dll
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Contracts\obj\Debug\net10.0\refint\Fleet.Contracts.dll
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Contracts\obj\Debug\net10.0\Fleet.Contracts.pdb
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Contracts\obj\Debug\net10.0\ref\Fleet.Contracts.dll

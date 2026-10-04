@@ -1,0 +1,15 @@
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\bin\Debug\net10.0\Fleet.Simulator.exe
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\bin\Debug\net10.0\Fleet.Simulator.deps.json
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\bin\Debug\net10.0\Fleet.Simulator.runtimeconfig.json
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\bin\Debug\net10.0\Fleet.Simulator.dll
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\bin\Debug\net10.0\Fleet.Simulator.pdb
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\obj\Debug\net10.0\Fleet.Simulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\obj\Debug\net10.0\Fleet.Simulator.AssemblyInfoInputs.cache
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\obj\Debug\net10.0\Fleet.Simulator.AssemblyInfo.cs
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\obj\Debug\net10.0\Fleet.Simulator.csproj.CoreCompileInputs.cache
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\obj\Debug\net10.0\Fleet.Simulator.sourcelink.json
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\obj\Debug\net10.0\Fleet.Simulator.dll
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\obj\Debug\net10.0\refint\Fleet.Simulator.dll
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\obj\Debug\net10.0\Fleet.Simulator.pdb
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\obj\Debug\net10.0\Fleet.Simulator.genruntimeconfig.cache
+C:\Users\juancubillos\source\repos\FleetMonitoring\src\Fleet.Simulator\obj\Debug\net10.0\ref\Fleet.Simulator.dll
