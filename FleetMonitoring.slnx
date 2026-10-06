@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Elementos de la solución/">
+    <File Path="docker-compose.yml" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="src/Fleet.Api/Fleet.Api.csproj" />
     <Project Path="src/Fleet.Application/Fleet.Application.csproj" />
@@ -12,4 +15,25 @@
     <Project Path="tests/Fleet.IntegrationTests/Fleet.IntegrationTests.csproj" />
     <Project Path="tests/Fleet.UnitTests/Fleet.UnitTests.csproj" />
   </Folder>
+  <Project Path="src/fleet-web/" Type="Website" DisplayName="fleet-web">
+    <BuildType Project="Debug" />
+    <Properties Name="WebsiteProperties">
+      <Property Name="Debug.AspNetCompiler.Debug" Value="&quot;True&quot;" />
+      <Property Name="Debug.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+      <Property Name="Debug.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+      <Property Name="Debug.AspNetCompiler.PhysicalPath" Value="&quot;src\fleet-web\&quot;" />
+      <Property Name="Debug.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_54314\&quot;" />
+      <Property Name="Debug.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+      <Property Name="Debug.AspNetCompiler.VirtualPath" Value="&quot;/localhost_54314&quot;" />
+      <Property Name="Release.AspNetCompiler.Debug" Value="&quot;False&quot;" />
+      <Property Name="Release.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+      <Property Name="Release.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+      <Property Name="Release.AspNetCompiler.PhysicalPath" Value="&quot;src\fleet-web\&quot;" />
+      <Property Name="Release.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_54314\&quot;" />
+      <Property Name="Release.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+      <Property Name="Release.AspNetCompiler.VirtualPath" Value="&quot;/localhost_54314&quot;" />
+      <Property Name="TargetFrameworkMoniker" Value="&quot;.NETFramework,Version%3Dv4.8&quot;" />
+      <Property Name="VWDPort" Value="&quot;54314&quot;" />
+    </Properties>
+  </Project>
 </Solution>

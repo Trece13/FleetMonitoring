@@ -1,0 +1,130 @@
+<div class="dashboard">
+
+  <!-- HEADER -->
+  <header class="header">
+
+    <div>
+      <h1>Fleet Monitoring</h1>
+      <p>Real-time vehicle monitoring</p>
+    </div>
+
+    <!-- ESTADÍSTICAS -->
+    <div class="stats">
+
+      <div class="stat">
+        <strong>{{ vehicles.length }}</strong>
+        <span>Total</span>
+      </div>
+
+      <div class="stat moving-stat">
+        <strong>{{ movingCount }}</strong>
+        <span>Moving</span>
+      </div>
+
+      <div class="stat stationary-stat">
+        <strong>{{ stationaryCount }}</strong>
+        <span>Stationary</span>
+      </div>
+
+      <div class="stat stopped-stat">
+        <strong>{{ stoppedCount }}</strong>
+        <span>Stopped</span>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="content">
+
+    <!-- PANEL IZQUIERDO: VEHÍCULOS -->
+    <aside class="vehicles-panel">
+
+      <h2>Vehicles</h2>
+
+      <div
+        class="vehicle"
+        *ngFor="let vehicle of vehicles"
+        [class.selected]="selectedVehicleId === vehicle.vehicleId"
+        (click)="selectVehicle(vehicle)"
+      >
+
+        <div class="vehicle-title">
+
+          <strong>
+            {{ vehicle.vehicleId }}
+          </strong>
+
+          <span
+            class="status"
+            [class.moving]="vehicle.status === 'Moving'"
+            [class.stationary]="vehicle.status === 'Stationary'"
+            [class.stopped]="vehicle.status === 'Stopped'"
+          >
+            {{ vehicle.status }}
+          </span>
+
+        </div>
+
+
+        <!-- COORDENADAS -->
+        <div class="coordinates">
+
+          <span>
+            Lat:
+            {{
+              vehicle.latitude !== null
+                ? (vehicle.latitude | number:'1.4-6')
+                : '-'
+            }}
+          </span>
+
+          <span>
+            Lng:
+            {{
+              vehicle.longitude !== null
+                ? (vehicle.longitude | number:'1.4-6')
+                : '-'
+            }}
+          </span>
+
+        </div>
+
+
+        <!-- ÚLTIMA ACTUALIZACIÓN -->
+        <small *ngIf="vehicle.lastSeenAtUtc">
+          Last update:
+          {{ vehicle.lastSeenAtUtc | date:'mediumTime' }}
+        </small>
+
+      </div>
+
+
+      <!-- CUANDO NO HAY VEHÍCULOS -->
+      <div *ngIf="vehicles.length === 0">
+        <p>No vehicles available.</p>
+      </div>
+
+    </aside>
+
+
+    <!-- PANEL DERECHO: MAPA -->
+    <section class="map-container">
+
+      <!--
+        IMPORTANTE:
+        Este ID debe coincidir exactamente con:
+
+        L.map('fleet-map')
+
+        en dashboard.component.ts
+      -->
+      <div id="fleet-map"></div>
+
+    </section>
+
+  </main>
+
+</div>

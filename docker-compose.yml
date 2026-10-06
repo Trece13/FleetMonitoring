@@ -1,0 +1,40 @@
+services:
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: fleet-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "FleetPass123!"
+    ports:
+      - "1433:1433"
+    volumes:
+      - fleet_sql_data:/var/opt/mssql
+
+  mongodb:
+    image: mongo:latest
+    container_name: fleet-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - fleet_mongo_data:/data/db
+
+  redis:
+    image: redis:alpine
+    container_name: fleet-redis
+    ports:
+      - "6379:6379"
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: fleet-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: fleet
+      RABBITMQ_DEFAULT_PASS: fleet123
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  fleet_sql_data:
+  fleet_mongo_data:

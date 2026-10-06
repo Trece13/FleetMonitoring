@@ -1,41 +1,97 @@
+using Fleet.Api.Consumers;
+using Fleet.Api.Hubs;
+using Fleet.Application;
+using Fleet.Application.Abstractions;
+using Fleet.Infrastructure;
+using Fleet.Infrastructure.Messaging;
+using FluentValidation.AspNetCore;
+using MassTransit;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddControllers();
+
+// OpenAPI + Swagger
 builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddHealthChecks();
+builder.Services.AddSignalR();
+
+builder.Services.AddFluentValidationAutoValidation();
+
+builder.Services.AddApplication();
+
+builder.Services.AddInfrastructure(
+    builder.Configuration);
+
+builder.Services.AddScoped<
+    ITelemetryEventPublisher,
+    TelemetryEventPublisher>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Frontend", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
+
+builder.Services.AddMassTransit(x =>
+{
+    x.AddConsumer<VehicleStateUpdatedConsumer>();
+
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(
+            builder.Configuration["RabbitMq:Host"] ?? "localhost",
+            "/",
+            h =>
+            {
+                h.Username(
+                    builder.Configuration["RabbitMq:Username"] ?? "fleet");
+
+                h.Password(
+                    builder.Configuration["RabbitMq:Password"] ?? "fleet123");
+            });
+
+        cfg.ReceiveEndpoint(
+            "fleet-realtime",
+            endpoint =>
+            {
+                endpoint.ConfigureConsumer<
+                    VehicleStateUpdatedConsumer>(context);
+            });
+    });
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    // OpenAPI nativo
     app.MapOpenApi();
+
+    // Swagger
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.UseCors("Frontend");
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+app.MapControllers();
+
+app.MapHealthChecks("/health");
+
+app.MapHub<FleetHub>("/hubs/fleet");
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+public partial class Program;
