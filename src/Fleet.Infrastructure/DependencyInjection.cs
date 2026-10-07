@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using StackExchange.Redis;
+using Fleet.Infrastructure.Commands;
 
 namespace Fleet.Infrastructure;
 
@@ -61,6 +62,10 @@ public static class DependencyInjection
         services.AddScoped<
             IAlertQueries, 
             AlertQueries>();
+
+        services.AddScoped<
+            IVehicleCommands,
+            VehicleCommands>();
 
         return services;
     }

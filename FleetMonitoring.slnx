@@ -17,6 +17,7 @@
   </Folder>
   <Project Path="src/fleet-web/" Type="Website" DisplayName="fleet-web">
     <BuildType Project="Debug" />
+    <Build Solution="Debug|*" Project="false" />
     <Properties Name="WebsiteProperties">
       <Property Name="Debug.AspNetCompiler.Debug" Value="&quot;True&quot;" />
       <Property Name="Debug.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />

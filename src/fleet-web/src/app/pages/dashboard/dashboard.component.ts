@@ -70,8 +70,12 @@ export class DashboardComponent
 
     // Finalmente conectamos SignalR.
     this.realtimeService.start(
-      state => this.handleRealtimeUpdate(state)
-    );
+  state =>
+    this.handleRealtimeUpdate(state),
+
+  vehicleId =>
+    this.handleVehicleDeleted(vehicleId)
+);
 
     // Leaflet a veces necesita recalcular el tamaño
     // después de que Angular termina de renderizar.
@@ -472,4 +476,51 @@ export class DashboardComponent
       );
     }
   }
+
+  private handleVehicleDeleted(
+  vehicleId: string
+): void {
+
+  // 1. Quitamos el vehículo de la lista.
+  this.vehicles =
+    this.vehicles.filter(
+      x => x.vehicleId !== vehicleId
+    );
+
+
+  // 2. Quitamos su marcador del mapa.
+  const marker =
+    this.markers.get(vehicleId);
+
+  if (marker) {
+
+    marker.remove();
+
+    this.markers.delete(
+      vehicleId
+    );
+  }
+
+
+  // 3. Si era el vehículo seleccionado,
+  // quitamos también su histórico.
+  if (
+    this.selectedVehicleId === vehicleId
+  ) {
+
+    this.selectedVehicleId =
+      undefined;
+
+    if (this.historyPolyline) {
+
+      this.historyPolyline.remove();
+
+      this.historyPolyline =
+        undefined;
+    }
+  }
+
+
+  this.cdr.markForCheck();
+}
 }

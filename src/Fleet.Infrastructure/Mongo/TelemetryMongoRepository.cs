@@ -100,4 +100,12 @@ public sealed class TelemetryMongoRepository : ITelemetryHistoryQueries
                 x.RecordedAtUtc))
             .ToList();
     }
+    public async Task DeleteByVehicleAsync(
+    string vehicleId,
+    CancellationToken cancellationToken = default)
+    {
+        await _collection.DeleteManyAsync(
+            x => x.VehicleId == vehicleId,
+            cancellationToken);
+    }
 }

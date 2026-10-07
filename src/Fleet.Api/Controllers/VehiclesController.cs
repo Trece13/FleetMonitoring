@@ -9,12 +9,16 @@ public sealed class VehiclesController : ControllerBase
 {
     private readonly IVehicleQueries _vehicleQueries;
     private readonly ITelemetryHistoryQueries _historyQueries;
+    private readonly IVehicleCommands _vehicleCommands;
+
     public VehiclesController(
         IVehicleQueries vehicleQueries,
-        ITelemetryHistoryQueries historyQueries)
+        ITelemetryHistoryQueries historyQueries,
+        IVehicleCommands vehicleCommands)
     {
         _vehicleQueries = vehicleQueries;
         _historyQueries = historyQueries;
+        _vehicleCommands = vehicleCommands;
     }
 
     [HttpGet]
@@ -59,4 +63,23 @@ public sealed class VehiclesController : ControllerBase
 
         return Ok(history);
     }
+
+    [HttpDelete("{vehicleId}")]
+    public async Task<IActionResult> Delete(
+    string vehicleId,
+    CancellationToken cancellationToken)
+    {
+        var deleted =
+            await _vehicleCommands.DeleteAsync(
+                vehicleId,
+                cancellationToken);
+
+        if (!deleted)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
 }

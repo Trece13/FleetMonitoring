@@ -45,6 +45,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<VehicleStateUpdatedConsumer>();
+    x.AddConsumer<VehicleDeletedRealtimeConsumer>();
 
     x.UsingRabbitMq((context, cfg) =>
     {
@@ -64,8 +65,9 @@ builder.Services.AddMassTransit(x =>
             "fleet-realtime",
             endpoint =>
             {
-                endpoint.ConfigureConsumer<
-                    VehicleStateUpdatedConsumer>(context);
+                endpoint.ConfigureConsumer<VehicleStateUpdatedConsumer>(context);
+
+                endpoint.ConfigureConsumer<VehicleDeletedRealtimeConsumer>(context);
             });
     });
 });
